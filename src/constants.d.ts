@@ -6,3 +6,23 @@ export enum ACTIONS {
     EVALUATE = "evaluate",
 }
 export const INTEGER_FORMATTER = Intl.NumberFormat("en-us", { maximumFractionDigits: 0 });
+export const KEYPAD = [
+    "÷",
+    "1",
+    "2",
+    "3",
+
+    "+",
+    "4",
+    "5",
+    "6",
+
+    "*",
+    "7",
+    "8",
+    "9",
+
+    "-",
+    ".",
+    "0",
+];

@@ -1,6 +1,6 @@
 import "./styles.scss";
 import { useEffect, useReducer } from "react";
-import { ACTIONS } from "./constants.d";
+import { ACTIONS, KEYPAD } from "./constants.d";
 import { evaluate, formatOperand, handleKeyPressed } from "./helper";
 import Button from "./Components/Buttons";
 import OperationButton from "./Components/OperationButton";
@@ -117,24 +117,11 @@ function App() {
             <button onClick={() => dispatch({ type: ACTIONS.DELETE_DIGIT, payload: {} })}>
                 DEL
             </button>
-            <OperationButton operation="÷" dispatch={dispatch} />
-            <Button digit="1" dispatch={dispatch} />
-            <Button digit="2" dispatch={dispatch} />
-            <Button digit="3" dispatch={dispatch} />
-            <OperationButton operation="*" dispatch={dispatch} />
-
-            <Button digit="4" dispatch={dispatch} />
-            <Button digit="5" dispatch={dispatch} />
-            <Button digit="6" dispatch={dispatch} />
-            <OperationButton operation="+" dispatch={dispatch} />
-
-            <Button digit="7" dispatch={dispatch} />
-            <Button digit="8" dispatch={dispatch} />
-            <Button digit="9" dispatch={dispatch} />
-            <OperationButton operation="-" dispatch={dispatch} />
-
-            <Button digit="." dispatch={dispatch} />
-            <Button digit="0" dispatch={dispatch} />
+            {KEYPAD.map((number_: string): JSX.Element => {
+                if (isNaN(parseInt(number_)))
+                    return <Button digit={number_} dispatch={dispatch} />;
+                return <OperationButton operation={number_} dispatch={dispatch} />;
+            })}
             <button
                 className="span-two"
                 onClick={() => dispatch({ type: ACTIONS.EVALUATE, payload: {} })}
