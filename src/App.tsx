@@ -9,7 +9,7 @@ function reducer(
     { type, payload }: { type: ACTIONS; payload: Record<string, string> }
 ) {
     switch (type) {
-        case ACTIONS.ADD_DIGIT:
+        case ACTIONS.ADD_DIGIT: {
             // there can only be 1 zero at the start
             if (payload.digit === "0" && state.currentOperand === "0") return state;
             // the user can have only 1 period
@@ -19,6 +19,7 @@ function reducer(
                 ...state,
                 currentOperand: `${state.currentOperand || ""}${payload.digit}`,
             };
+        }
     }
 }
 
