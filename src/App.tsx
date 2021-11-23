@@ -1,7 +1,7 @@
 import "./styles.scss";
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import { ACTIONS } from "./constants.d";
-import { evaluate, formatOperand } from "./helper";
+import { evaluate, formatOperand, handleKeyPressed } from "./helper";
 import Button from "./Components/Buttons";
 import OperationButton from "./Components/OperationButton";
 
@@ -95,6 +95,11 @@ function App() {
         reducer,
         {}
     );
+    useEffect(() => {
+        document.addEventListener("keydown", (event) =>
+            handleKeyPressed(event, dispatch)
+        );
+    }, []);
     return (
         <div className="calculator-grid">
             <div className="output">

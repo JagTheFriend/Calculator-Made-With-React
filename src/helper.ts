@@ -1,4 +1,4 @@
-import { INTEGER_FORMATTER } from "./constants.d";
+import { ACTIONS, INTEGER_FORMATTER } from "./constants.d";
 
 export function formatOperand(operand: string) {
     if (operand == null) return;
@@ -35,4 +35,47 @@ export function evaluate({
             break;
     }
     return computation.toString();
+}
+
+export function handleKeyPressed(event: any, dispatch: Function) {
+    const digit = event!.key;
+
+    switch (digit) {
+        case "+": {
+            return dispatch({
+                type: ACTIONS.CHOOSE_OPERATION,
+                payload: { operation: digit },
+            });
+        }
+        case "-": {
+            return dispatch({
+                type: ACTIONS.CHOOSE_OPERATION,
+                payload: { operation: digit },
+            });
+        }
+        case "*": {
+            return dispatch({
+                type: ACTIONS.CHOOSE_OPERATION,
+                payload: { operation: digit },
+            });
+        }
+        case "/": {
+            return dispatch({
+                type: ACTIONS.CHOOSE_OPERATION,
+                payload: { operation: "÷" },
+            });
+        }
+        case "Backspace": {
+            return dispatch({ type: ACTIONS.DELETE_DIGIT, payload: { digit } });
+        }
+        case "Enter":
+        case "=": {
+            return dispatch({ type: ACTIONS.EVALUATE, payload: { digit } });
+        }
+        default: {
+            // check whether the digit is a number or not before showing it to the screen
+            if (isNaN(parseInt(digit)) && digit !== ".") return;
+            return dispatch({ type: ACTIONS.ADD_DIGIT, payload: { digit } });
+        }
+    }
 }
