@@ -139,7 +139,12 @@ function App() {
                 </div>
                 <div className="current-operand">{formatOperand(currentOperand)}</div>
             </div>
-            <button className="span-two">AC</button>
+            <button
+                className="span-two"
+                onClick={() => dispatch({ type: ACTIONS.CLEAR, payload: {} })}
+            >
+                AC
+            </button>
             <button onClick={() => dispatch({ type: ACTIONS.DELETE_DIGIT, payload: {} })}>
                 DEL
             </button>
