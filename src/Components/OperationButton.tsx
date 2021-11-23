@@ -1,4 +1,4 @@
-import React from "react";
+import { ACTIONS } from "../constants.d";
 
 export default function OperationButton({
     operation,
@@ -7,5 +7,13 @@ export default function OperationButton({
     operation: string;
     dispatch: Function;
 }) {
-    return <div></div>;
+    return (
+        <button
+            onClick={() =>
+                dispatch({ type: ACTIONS.CHOOSE_OPERATION, payload: { operation } })
+            }
+        >
+            {operation}
+        </button>
+    );
 }
