@@ -4,8 +4,6 @@ import { ACTIONS } from "./constants.d";
 import Button from "./Components/Buttons";
 import OperationButton from "./Components/OperationButton";
 
-declare var currentOperand: string;
-
 function reducer(
     state: any,
     { type, payload }: { type: ACTIONS; payload: Record<string, number> }
@@ -14,7 +12,7 @@ function reducer(
         case ACTIONS.ADD_DIGIT:
             return {
                 ...state,
-                currentOperand: `${currentOperand || ""}${payload.digit}`,
+                currentOperand: `${state.currentOperand || ""}${payload.digit}`,
             };
     }
 }
