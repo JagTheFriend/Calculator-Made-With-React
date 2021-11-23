@@ -2,6 +2,7 @@ import "./styles.scss";
 import { useReducer } from "react";
 import { ACTIONS } from "./constants.d";
 import Button from "./Components/Buttons";
+import OperationButton from "./Components/OperationButton";
 
 declare var currentOperand: string;
 
@@ -34,24 +35,23 @@ function App() {
             </div>
             <button className="span-two">AC</button>
             <button>DEL</button>
-
-            <button>÷</button>
+            <OperationButton operation="÷" dispatch={dispatch} />
             <Button digit="1" dispatch={dispatch} />
             <Button digit="2" dispatch={dispatch} />
             <Button digit="3" dispatch={dispatch} />
+            <OperationButton operation="*" dispatch={dispatch} />
 
-            <button>*</button>
             <Button digit="4" dispatch={dispatch} />
             <Button digit="5" dispatch={dispatch} />
             <Button digit="6" dispatch={dispatch} />
+            <OperationButton operation="+" dispatch={dispatch} />
 
-            <button>+</button>
             <Button digit="7" dispatch={dispatch} />
             <Button digit="8" dispatch={dispatch} />
             <Button digit="9" dispatch={dispatch} />
+            <OperationButton operation="-" dispatch={dispatch} />
 
-            <button>-</button>
-            <button>.</button>
+            <Button digit="." dispatch={dispatch} />
             <Button digit="0" dispatch={dispatch} />
             <button className="span-two">=</button>
         </div>
