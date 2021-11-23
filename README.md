@@ -1,6 +1,9 @@
-# Getting Started with Create React App
+# Calculator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is simple calculator built with react\
+Run: `npm install` to download all the dependencies,\
+then run: `npm start` to start the project and\
+visit [http://localhost:3000](http://localhost:3000) to view it in the browser
 
 ## Available Scripts
 
