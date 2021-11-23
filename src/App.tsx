@@ -6,10 +6,15 @@ import OperationButton from "./Components/OperationButton";
 
 function reducer(
     state: any,
-    { type, payload }: { type: ACTIONS; payload: Record<string, number> }
+    { type, payload }: { type: ACTIONS; payload: Record<string, string> }
 ) {
     switch (type) {
         case ACTIONS.ADD_DIGIT:
+            // there can only be 1 zero at the start
+            if (payload.digit === "0" && state.currentOperand === "0") return state;
+            // the user can have only 1 period
+            if (payload.digit === "." && state.currentOperand.includes(".")) return state;
+
             return {
                 ...state,
                 currentOperand: `${state.currentOperand || ""}${payload.digit}`,
