@@ -1,8 +1,15 @@
 import "./styles.scss";
 import { useReducer } from "react";
-import { ACTIONS } from "./constants.d";
+import { ACTIONS, INTEGER_FORMATTER } from "./constants.d";
 import Button from "./Components/Buttons";
 import OperationButton from "./Components/OperationButton";
+
+function formatOperand(operand: string) {
+    if (operand == null) return;
+    const [integer, decimal] = operand.split(".");
+    if (decimal == null) return INTEGER_FORMATTER.format(parseFloat(integer));
+    return `${INTEGER_FORMATTER.format(parseFloat(integer))}.${decimal}`;
+}
 
 function evaluate({
     currentOperand,
@@ -128,9 +135,9 @@ function App() {
         <div className="calculator-grid">
             <div className="output">
                 <div className="previous-operand">
-                    {previousOperand} {operation}
+                    {formatOperand(previousOperand)} {operation}
                 </div>
-                <div className="current-operand">{currentOperand}</div>
+                <div className="current-operand">{formatOperand(currentOperand)}</div>
             </div>
             <button className="span-two">AC</button>
             <button onClick={() => dispatch({ type: ACTIONS.DELETE_DIGIT, payload: {} })}>

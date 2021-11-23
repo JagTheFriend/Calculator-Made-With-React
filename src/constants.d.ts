@@ -5,3 +5,4 @@ export enum ACTIONS {
     DELETE_DIGIT = "delete-digit",
     EVALUATE = "evaluate",
 }
+export const INTEGER_FORMATTER = Intl.NumberFormat("en-us", { maximumFractionDigits: 0 });
